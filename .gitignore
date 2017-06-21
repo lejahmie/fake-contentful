@@ -1,0 +1,18 @@
+# OSX
+.DS_Store
+
+# Tool specific
+.idea/**
+build/
+.vscode/
+jsconfig.json
+temp
+
+# Ignore npm modules
+**/node_modules/**
+
+# Ignore npm debug log
+npm-debug.log*
+
+# Ignore docker-compose overrides
+docker-compose.override.yml
