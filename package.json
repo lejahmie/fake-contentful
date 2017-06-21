@@ -1,6 +1,6 @@
 {
   "name": "fake-contentful",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Fakes Contentful",
   "main": "app.js",
   "scripts": {
