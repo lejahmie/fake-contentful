@@ -1,0 +1,24 @@
+{
+  "name": "fake-contentful",
+  "version": "1.0.0",
+  "description": "Fakes Contentful",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "watch": "nodemon app.js",
+    "preversion": "npm test",
+    "test": "npm-run-all test:*",
+    "test:quality": "jshint . --exclude=node_modules",
+    "test:style": "jscs .",
+    "test:unit": "mocha tests --check-leaks"
+  },
+  "author": "Jamie Telin (jamie.telin@humanit.se)",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "lokijs": "^1.5.0",
+    "nodemon": "^1.11.0",
+    "shrinkwrap": "^0.4.0"
+  }
+}

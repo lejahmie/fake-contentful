@@ -1,0 +1,13 @@
+# Docker-compose overrides for local development purposes
+#
+# To enable overrides, copy the file into docker-compose.override.yml
+version: "2"
+services:
+  node:
+    build: .
+    volumes: # Only use these if you are planning to use shared folders from host system
+      - "/usr/src/app/node_modules" # Create internal volume for node_modules so that host volume doesn't overwrite installed files
+      - ".:/usr/src/app" # Add host volume for development purposes
+    command: node_modules/.bin/nodemon --legacy-watch ./app.js # Setup auto restarts for node server (virtualbox setup requires --legacy-watch flag)
+    ports:
+      - "8001:8001"
