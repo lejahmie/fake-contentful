@@ -1,5 +1,11 @@
 const libs = require('../../../libs');
 
+/**
+ * API endpoint for POST entries
+ * @param {Object}    req   Express request object
+ * @param {Object}    res   Express response object
+ * @param {Function}  next  Express next function
+ */
 module.exports = function create(req, res, next) {
   const spaceid = req.params.spaceid;
 

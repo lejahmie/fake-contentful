@@ -1,3 +1,9 @@
+/**
+ * API endpoint
+ * @param {Object}    req   Express request object
+ * @param {Object}    res   Express response object
+ * @param {Function}  next  Express next function
+ */
 module.exports = function remove(req, res, next) {
 
   let spaceid = req.params.spaceid;
