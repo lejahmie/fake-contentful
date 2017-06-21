@@ -11,6 +11,9 @@ temp
 # Ignore npm modules
 **/node_modules/**
 
+# Config
+config/custom.js
+
 # Ignore npm debug log
 npm-debug.log*
 
