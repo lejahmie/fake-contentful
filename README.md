@@ -21,6 +21,18 @@ POST /spaces/yadj1kx9rmg0/entries
 }
 ```
 
+***Supported API endpoints:***   
+
+- DELETE /spaces/:spaceid/entries/:entryid/archived
+- UPDATE /spaces/:spaceid/entries/:entryid/archived
+- GET /spaces/:spaceid/entries/:entryid
+- DELETE /spaces/:spaceid/entries/:entryid/published
+- PUT /spaces/:spaceid/entries/:entryid/published
+- GET /spaces/:spaceid/entries/:entryid
+- DELETE /spaces/:spaceid/entries/:entryid
+- GET /spaces/:spaceid
+
+
 Docker compose override
 -----------------------
 

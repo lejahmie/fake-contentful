@@ -10,7 +10,7 @@
     "test": "npm-run-all test:*",
     "test:quality": "jshint . --exclude=node_modules",
     "test:style": "jscs .",
-    "test:unit": "mocha tests --check-leaks"
+    "test:system": "mocha './{,!(node_modules)/**/}*.test.js' --recursive --check-leaks"
   },
   "author": "Jamie Telin (jamie.telin@humanit.se)",
   "license": "MIT",
@@ -20,5 +20,12 @@
     "lokijs": "^1.5.0",
     "nodemon": "^1.11.0",
     "shrinkwrap": "^0.4.0"
+  },
+  "devDependencies": {
+    "jscs": "^3.0.7",
+    "jshint": "^2.9.4",
+    "mocha": "^3.4.2",
+    "npm-run-all": "^4.0.2",
+    "supertest": "^3.0.0"
   }
 }

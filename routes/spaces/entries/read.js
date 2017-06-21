@@ -36,6 +36,10 @@ module.exports = function read(req, res, next) {
 
   // Get entry from in-memory db by id
   let entry = res.dbItems.findOne({'sys.id': entryid});
-
+  if (!entry) {
+    let error = new Error('No content found');
+    error.code = 10001;
+    return next(error);
+  }
   return res.json(entry);
 };

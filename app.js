@@ -3,13 +3,13 @@ const express = require('express');
 const routes = require('./routes');
 const pckg = require('./package.json');
 
-let app = express();
+const app = express();
 
 app.enable('trust proxy');
 
 app.use(routes);
 
-let server = app.listen(8001, () => {
+const server = app.listen(8001, () => {
   console.log('');
   console.log('');
   console.log(`     ${pckg.name}`);
