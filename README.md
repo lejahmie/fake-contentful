@@ -4,7 +4,7 @@ Fake Contentful
 Fakes the Contentful Management API.
 For full reference of API see https://www.contentful.com/developers/docs/references/content-management-api/
 
-**API Example:**   
+## API Example ##
 
 POST /spaces/yadj1kx9rmg0/entries
 
@@ -21,7 +21,7 @@ POST /spaces/yadj1kx9rmg0/entries
 }
 ```
 
-***Supported API endpoints:***   
+## Supported API endpoints ##
 
 - DELETE /spaces/:spaceid/entries/:entryid/archived
 - UPDATE /spaces/:spaceid/entries/:entryid/archived
@@ -33,22 +33,20 @@ POST /spaces/yadj1kx9rmg0/entries
 - GET /spaces/:spaceid
 
 
-Docker compose override
------------------------
+## Docker compose override ##
+
 
 To enable overrides, copy the file docker-compose.override-example.yml into docker-compose.override.yml, it is gitignored.
 
 
-Start with
-----------
+## Start with ##
 
 ```shell
 docker-compose up
 ```
 
 
-Run tests
----------
+## Run tests ##
 
 ```shell
 npm test
