@@ -23,7 +23,7 @@ module.exports = function read(req, res, next) {
 
     // If filtered by content type, add it to query
     if (req.query.content_type) { // jshint ignore: line
-      dbQuery['sys.contentType.sys.type'] = req.query.content_type; // jshint ignore: line
+      dbQuery['sys.contentType.sys.id'] = req.query.content_type; // jshint ignore: line
       delete req.query.content_type; // jshint ignore: line
     }
 
