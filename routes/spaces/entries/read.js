@@ -49,13 +49,27 @@ module.exports = function read(req, res, next) {
 
     // Put other queries into dbQuery
     // example; { fields.title: 'Hello World!' }
+    let fields = {};
     for (let key in req.query) {
       // Add default locale to fields
-      req.query[`${key}.${locale}`] = req.query[key];
+      if (key.indexOf('fields.') >= 0) {
+        req.query[`${key}.${locale}`] = req.query[key];
+        // Check if query uses filter in
+        if (typeof req.query[`${key}.${locale}`].in === 'string') {
+          fields[`${key}.${locale}`] = {
+            '$in': req.query[key].in.split(',')
+          };
+        // Check if query uses filter nin
+        } else if (typeof req.query[`${key}.${locale}`].nin === 'string') {
+          fields[`${key}.${locale}`] = {
+            '$nin': req.query[key].in.split(',')
+          };
+        }
+      }
       delete req.query[key];
     }
 
-    Object.assign(dbQuery, req.query);
+    Object.assign(dbQuery, fields);
     let entries = res.dbItems.chain().find(dbQuery).offset(skip).limit(limit).data();
 
     let response = {
