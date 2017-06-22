@@ -15,6 +15,7 @@ describe('UPDATE /spaces/:spaceid/entries/:entryid/archived', () => {
     supertest(app)
       .post('/spaces/aoisuioujdas/entries')
       .type('form')
+      .set('X-Contentful-Content-Type', 'content')
       .send({
         'fields': {
           'title': {

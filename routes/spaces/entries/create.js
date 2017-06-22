@@ -8,6 +8,7 @@ const libs = require('../../../libs');
  */
 module.exports = function create(req, res, next) {
   const spaceid = req.params.spaceid;
+  const contentType = req.get('X-Contentful-Content-Type');
 
   if (!spaceid) {
     let error = new Error('Missing space id');
@@ -17,9 +18,16 @@ module.exports = function create(req, res, next) {
 
   if (!req.body.fields) {
     let error = new Error('Missing fields');
-    error.code = 10001;
+    error.code = 10002;
     return next(error);
   }
+
+  if (!contentType) {
+    let error = new Error('Missing X-Contentful-Content-Type header');
+    error.code = 10003;
+    return next(error);
+  }
+
 
   const date = new Date().toJSON();
   let entry = {
@@ -39,7 +47,7 @@ module.exports = function create(req, res, next) {
         'sys': {
           'type': 'Link',
           'linkType': 'ContentType',
-          'id': 'hfM9RCJIk0wIm06WkEOQY'
+          'id': contentType
         }
       },
       'createdAt': date,
