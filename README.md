@@ -21,17 +21,56 @@ POST /spaces/yadj1kx9rmg0/entries
 }
 ```
 
-## Supported API endpoints ##
+### Supported API endpoints ###
 
 - DELETE /spaces/:spaceid/entries/:entryid/archived
 - UPDATE /spaces/:spaceid/entries/:entryid/archived
 - DELETE /spaces/:spaceid/entries/:entryid/published
 - PUT /spaces/:spaceid/entries/:entryid/published
+- GET /spaces/:spaceid
 - GET /spaces/:spaceid/entries/
+  - Supports filters: in, nin, limit, skip
 - GET /spaces/:spaceid/entries/:entryid
 - DELETE /spaces/:spaceid/entries/:entryid
-- GET /spaces/:spaceid
 
+## Use in docker-compose
+
+Load the fake-contentful image and link it into your container where you can override the api.contentful.com url to point to fake container.
+
+```yml
+version: "2"
+services:
+  node:
+    build: .
+    links:
+      - fakeContentful:api.contentful.com
+    depends_on:
+      - fakeContentful
+
+  fakeContentful:
+    image: jahmie/fake-contentful
+```
+
+Make sure to also allow insecure connection to force Contentful SDK to use port 80.
+
+```javascript
+const contentfulManagement = require('contentful-management');
+const contentfulClient = contentfulManagement.createClient({
+  insecure: true,
+  accessToken: 'YOUR_ACCESS_TOKEN'
+});
+```
+
+If you do notw ant to ovverride the api.contentful.com url, then you can also use the host option when creating client.
+
+```javascript
+const contentfulManagement = require('contentful-management');
+const contentfulClient = contentfulManagement.createClient({
+  insecure: true,
+  host: 'fakeContentful'
+  accessToken: 'YOUR_ACCESS_TOKEN'
+});
+```
 
 ## Docker compose override ##
 
